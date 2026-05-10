@@ -53,7 +53,7 @@ export default function ProductCard({ product, index = 0 }) {
             }}
           >
             <ShoppingBag size={13} strokeWidth={1.5} />
-            Add to Bag
+            Add to Cart
           </button>
         </div>
       </div>

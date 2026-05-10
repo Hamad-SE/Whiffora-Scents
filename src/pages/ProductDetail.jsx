@@ -68,7 +68,7 @@ export default function ProductDetail() {
               key={activeImg}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              style={{ background: '#f7f5f2', aspectRatio: '1/1', overflow: 'hidden' }}
+              style={{ background: '#f7f5f2', aspectRatio: '3/4', overflow: 'hidden' }}
             >
               <img
                 src={product.gallery?.[activeImg] || product.image_url}
@@ -166,7 +166,7 @@ export default function ProductDetail() {
 
           {/* Perks */}
           <div style={{ display: 'flex', gap: 0, borderTop: '1px solid #f0ede8', paddingTop: 24 }}>
-            {[['🚚', 'Free delivery', 'Orders over Rs. 5,000'], ['✅', 'Authentic', '100% genuine'], ['↩️', 'Easy returns', 'Within 7 days']].map(([icon, title, sub]) => (
+            {[['🚚', 'Free delivery', 'Orders over Rs. 5,000'], ['✅', 'Authentic', '100% genuine']].map(([icon, title, sub]) => (
               <div key={title} style={{ flex: 1, textAlign: 'center' }}>
                 <span style={{ fontSize: 18 }}>{icon}</span>
                 <p style={{ fontSize: 11, color: '#1a1a1a', marginTop: 6, fontWeight: 500 }}>{title}</p>
