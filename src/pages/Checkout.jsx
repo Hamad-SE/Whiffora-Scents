@@ -14,6 +14,9 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { cart, getTotal, clearCart } = useCartStore();
   const total = getTotal();
+  const delivery = total >= 5000 ? 0 : 250;
+  const grandTotal = total + delivery;
+
   const [form, setForm] = useState({ name: '', phone: '', email: '', address: '', city: '', notes: '' });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -24,8 +27,35 @@ export default function Checkout() {
     e.preventDefault();
     if (!form.name || !form.phone || !form.address || !form.city) { setError('Please fill in all required fields.'); return; }
     setSubmitting(true);
+
+    // Construct WhatsApp Message
+    let message = `*New Order from Whiffora Scents!*\n\n`;
+    message += `*Customer Details:*\n`;
+    message += `Name: ${form.name}\n`;
+    message += `Phone: ${form.phone}\n`;
+    if (form.email) message += `Email: ${form.email}\n`;
+    message += `Address: ${form.address}\n`;
+    message += `City: ${form.city}\n`;
+    if (form.notes) message += `Notes: ${form.notes}\n`;
+
+    message += `\n*Order Details:*\n`;
+    cart.forEach(item => {
+      message += `- ${item.name} ${item.selectedSize ? `(${item.selectedSize})` : ''} x ${item.quantity} = Rs. ${(item.price * item.quantity).toLocaleString()}\n`;
+    });
+
+    message += `\n*Subtotal:* Rs. ${total.toLocaleString()}`;
+    message += `\n*Delivery:* ${delivery === 0 ? 'Free' : `Rs. ${delivery}`}`;
+    message += `\n*Grand Total:* Rs. ${grandTotal.toLocaleString()}`;
+    message += `\n*Payment Method:* Cash on Delivery`;
+
+    const encodedMessage = encodeURIComponent(message);
+    // TODO: The shop owner needs to change this to their real WhatsApp number (including country code)
+    const phoneNumber = "+923084886368";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
     try {
-      await new Promise(r => setTimeout(r, 1400));
+      await new Promise(r => setTimeout(r, 800));
+      window.open(whatsappUrl, '_blank');
       clearCart();
       navigate('/thank-you');
     } catch { setError('Something went wrong. Please try again.'); }
@@ -41,8 +71,7 @@ export default function Checkout() {
     );
   }
 
-  const delivery = total >= 5000 ? 0 : 250;
-  const grandTotal = total + delivery;
+  // Delivery calculation is now moved to the top of the component
 
   return (
     <div style={{ paddingTop: 72, minHeight: '100vh', background: '#faf9f7' }}>
