@@ -75,7 +75,7 @@ export default function Checkout() {
 
   return (
     <div style={{ paddingTop: 72, minHeight: '100vh', background: '#faf9f7' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 32px 80px', display: 'grid', gridTemplateColumns: '1fr 380px', gap: 48, alignItems: 'start' }}>
+      <div id="checkout-layout" style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 32px 80px', display: 'grid', gridTemplateColumns: '1fr 380px', gap: 48, alignItems: 'start' }}>
 
         {/* ── Form ── */}
         <div>
@@ -89,7 +89,7 @@ export default function Checkout() {
             {/* Contact */}
             <div style={{ background: '#fff', border: '1px solid #f0ede8', padding: '32px', marginBottom: 20 }}>
               <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 20, fontWeight: 400, marginBottom: 24 }}>Contact</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div className="checkout-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 {[['Full Name', 'name', 'text', 'Aisha Rahman', true], ['Phone', 'phone', 'tel', '+92 300 0000000', true], ['Email', 'email', 'email', 'Optional', false]].map(([label, name, type, ph, req]) => (
                   <div key={name} style={{ gridColumn: name === 'email' ? 'span 2' : 'auto' }}>
                     <label style={{ display: 'block', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#aaa', marginBottom: 8 }}>{label}{req ? ' *' : ''}</label>
@@ -213,6 +213,9 @@ export default function Checkout() {
         @keyframes spin { to { transform: rotate(360deg); } }
         @media(max-width: 900px) {
           #checkout-layout { grid-template-columns: 1fr !important; }
+        }
+        @media(max-width: 480px) {
+          .checkout-form-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>

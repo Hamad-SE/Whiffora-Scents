@@ -85,7 +85,7 @@ function FeaturedProducts() {
         </div>
 
         {loading ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+          <div id="featured-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
             {[...Array(4)].map((_, i) => (
               <div key={i}>
                 <div style={{ aspectRatio: '3/4', background: '#f0ede8', animation: 'pulse 1.5s infinite' }} />
@@ -94,7 +94,7 @@ function FeaturedProducts() {
             ))}
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+          <div id="featured-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
             {products.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
           </div>
         )}
@@ -106,7 +106,7 @@ function FeaturedProducts() {
 /* ── Split Banner ───────────────────────────────── */
 function SplitBanner() {
   return (
-    <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 480 }}>
+    <section id="split-banner" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 480 }}>
       {/* Image */}
       <div style={{ overflow: 'hidden' }}>
         <img
@@ -116,7 +116,7 @@ function SplitBanner() {
         />
       </div>
       {/* Text */}
-      <div style={{ background: '#f7f5f2', display: 'flex', alignItems: 'center', padding: '64px' }}>
+      <div className="split-text" style={{ background: '#f7f5f2', display: 'flex', alignItems: 'center', padding: '64px' }}>
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -147,6 +147,16 @@ export default function Home() {
       <Hero />
       <FeaturedProducts />
       <SplitBanner />
+      <style>{`
+        @media (max-width: 768px) {
+          #featured-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+          #split-banner { grid-template-columns: 1fr !important; }
+          .split-text { padding: 40px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #featured-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </>
   );
 }

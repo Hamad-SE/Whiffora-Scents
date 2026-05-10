@@ -70,7 +70,7 @@ export default function Shop() {
       {/* Grid */}
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px 96px' }}>
         {loading ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+          <div id="shop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
             {[...Array(6)].map((_, i) => (
               <div key={i}>
                 <div style={{ aspectRatio: '3/4', background: '#f0ede8', opacity: 0.6 }} />
@@ -84,7 +84,7 @@ export default function Shop() {
             <p style={{ fontSize: 13, color: '#aaa', marginTop: 8 }}>Try a different category</p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+          <div id="shop-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
             {products.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
           </div>
         )}

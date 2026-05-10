@@ -59,7 +59,7 @@ export default function ProductDetail() {
       </div>
 
       {/* Main */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '40px 32px 80px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'start' }}>
+      <div id="product-main-grid" style={{ maxWidth: 1200, margin: '0 auto', padding: '40px 32px 80px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'start' }}>
 
         {/* ── Left: Images ── */}
         <div>
@@ -188,7 +188,7 @@ export default function ProductDetail() {
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>
             <p style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#c9a227', marginBottom: 10 }}>You May Also Like</p>
             <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 32, fontWeight: 300, marginBottom: 40 }}>Related Fragrances</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+            <div id="related-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
               {related.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
             </div>
           </div>
