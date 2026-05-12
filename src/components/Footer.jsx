@@ -27,8 +27,8 @@ export default function Footer() {
               Artisan perfumes crafted with rare ingredients. Each bottle holds a story.
             </p>
             <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
-              {[Ig].map((Icon, i) => (
-                <a key={i} target="_blank" href="https://www.instagram.com/whiffora_scents.pk?igsh=c2Q3bmtoMmRjM2Y2&utm_source=qr" style={{ width: 34, height: 34, border: '1px solid #333', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#888', textDecoration: 'none', transition: 'all 0.2s' }}
+              {[Ig, Fb].map((Icon, i) => (
+                <a key={i} target="_blank" href={i === 0 ? "https://www.instagram.com/whiffora_scents.pk?igsh=c2Q3bmtoMmRjM2Y2&utm_source=qr" : "https://www.facebook.com/share/18UNb2YQg2/?mibextid=wwXIfr"} style={{ width: 34, height: 34, border: '1px solid #333', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#888', textDecoration: 'none', transition: 'all 0.2s' }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = '#c9a227'; e.currentTarget.style.color = '#c9a227'; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#888'; }}>
                   <Icon />
@@ -70,7 +70,7 @@ export default function Footer() {
             <div style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#c9a227', marginBottom: 20 }}>Contact</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 }}>
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', fontSize: 13, color: '#888' }}>
-                <Phone size={13} color="#c9a227" strokeWidth={1.5} /> +92 308 4886368
+                <Phone size={13} color="#c9a227" strokeWidth={1.5} /> +92 324 7192571
               </div>
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', fontSize: 13, color: '#888' }}>
                 <Mail size={13} color="#c9a227" strokeWidth={1.5} /> whifforascents@gmail.com

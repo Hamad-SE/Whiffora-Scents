@@ -33,6 +33,7 @@ export const useCartStore = create()(
           }
 
           const price = selectedSize ? selectedSize.price : product.price;
+          const original_price = selectedSize ? selectedSize.original_price : product.original_price;
 
           return {
             cart: [
@@ -42,6 +43,7 @@ export const useCartStore = create()(
                 cartKey: key,
                 selectedSize: selectedSize?.label || null,
                 price,
+                original_price,
                 quantity: 1,
               },
             ],

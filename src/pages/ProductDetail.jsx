@@ -104,7 +104,7 @@ export default function ProductDetail() {
           {/* Size selector */}
           {product.sizes && (
             <div style={{ marginBottom: 28 }}>
-              <p style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#aaa', marginBottom: 14 }}>Select Size</p>
+              <p style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#aaa', marginBottom: 14 }}>Size</p>
               <div style={{ display: 'flex', gap: 10 }}>
                 {product.sizes.map((size) => {
                   const active = effectiveSize?.label === size.label;
@@ -122,7 +122,10 @@ export default function ProductDetail() {
                       }}
                     >
                       <div>{size.label}</div>
-                      <div style={{ fontSize: 10, opacity: 0.7, marginTop: 2 }}>Rs. {size.price.toLocaleString()}</div>
+                      <div style={{ fontSize: 10, opacity: 0.7, marginTop: 2 }}>
+                        {size.original_price && <span style={{ textDecoration: 'line-through', marginRight: 4 }}>Rs. {size.original_price.toLocaleString()}</span>}
+                        <span>Rs. {size.price.toLocaleString()}</span>
+                      </div>
                     </button>
                   );
                 })}
@@ -131,9 +134,16 @@ export default function ProductDetail() {
           )}
 
           {/* Price */}
-          <div style={{ marginBottom: 28 }}>
-            <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 32, color: '#1a1a1a' }}>Rs. {effectiveSize.price.toLocaleString()}</span>
-            <span style={{ fontSize: 11, color: '#aaa', marginLeft: 8, letterSpacing: '0.1em', textTransform: 'uppercase' }}>/ {effectiveSize.label}</span>
+          <div style={{ marginBottom: 28, display: 'flex', alignItems: 'baseline', gap: '12px' }}>
+            {effectiveSize.original_price && (
+              <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 24, color: '#aaa', textDecoration: 'line-through' }}>
+                Rs. {effectiveSize.original_price.toLocaleString()}
+              </span>
+            )}
+            <div>
+              <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 32, color: '#1a1a1a' }}>Rs. {effectiveSize.price.toLocaleString()}</span>
+              <span style={{ fontSize: 11, color: '#aaa', marginLeft: 8, letterSpacing: '0.1em', textTransform: 'uppercase' }}>/ {effectiveSize.label}</span>
+            </div>
           </div>
 
           {/* Qty + Add */}
@@ -199,7 +209,12 @@ export default function ProductDetail() {
       <div style={{ display: 'none' }} className="mobile-sticky-cta">
         <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: '#fff', borderTop: '1px solid #f0ede8', padding: '16px 20px', display: 'flex', gap: 12, alignItems: 'center', zIndex: 40 }}>
           <div style={{ flex: 1 }}>
-            <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 18 }}>Rs. {effectiveSize.price.toLocaleString()}</p>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+              {effectiveSize.original_price && (
+                <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 14, color: '#aaa', textDecoration: 'line-through' }}>Rs. {effectiveSize.original_price.toLocaleString()}</span>
+              )}
+              <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 18, color: '#1a1a1a' }}>Rs. {effectiveSize.price.toLocaleString()}</span>
+            </div>
             <p style={{ fontSize: 10, color: '#aaa', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{effectiveSize.label}</p>
           </div>
           <button onClick={handleAdd}

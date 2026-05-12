@@ -7,9 +7,10 @@ export const products = [
     tagline: 'Soft. Warm. Alluring.',
     description:
       'A bold declaration of presence. Elara opens with a cloud of dark saffron before settling into a rich heart of rose oud and amber, leaving a trail of warm sandalwood and musk that lingers long after you\'ve left the room.',
-    price: 2500,
+    price: 1599,
+    original_price: 1999,
     sizes: [
-      { label: '50ml', price: 2500 },
+      { label: '50ml', price: 1599, original_price: 1899 },
     ],
     image_url: '/Velora1.jpeg',
     gallery: [
@@ -27,9 +28,10 @@ export const products = [
     tagline: 'Light. Ethereal. Unforgettable.',
     description:
       'Born from sunlit gardens and sea breezes. Elara is a luminous white floral — sheer neroli and jasmine over a warm musky base — the perfect companion for morning rituals.',
-    price: 2500,
+    price: 1699,
+    original_price: 1999,
     sizes: [
-      { label: '50ml', price: 2500 },
+      { label: '50ml', price: 1699, original_price: 1999 },
     ],
     image_url: '/Elara.jpeg',
     gallery: [
@@ -47,9 +49,10 @@ export const products = [
     tagline: 'Deep woods. Cool earth. Wild spirit.',
     description:
       'Step into a forest at dusk. Pine resin and cold air give way to a heart of cedarwood and iris, rooted in a rich base of dark patchouli and leather — a scent for those who walk their own path.',
-    price: 2500,
+    price: 1999,
+    original_price: 2499,
     sizes: [
-      { label: '50ml', price: 2500 },
+      { label: '50ml', price: 1999, original_price: 2299 },
     ],
     image_url: '/Oud Royale.jpeg',
     gallery: [

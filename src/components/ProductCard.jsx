@@ -69,9 +69,16 @@ export default function ProductCard({ product, index = 0 }) {
               {product.category}
             </p>
           </div>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#1a1a1a', fontWeight: 400, whiteSpace: 'nowrap', paddingTop: 2 }}>
-            Rs. {product.price.toLocaleString()}
-          </p>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            {product.original_price && (
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#aaa', textDecoration: 'line-through' }}>
+                Rs. {product.original_price.toLocaleString()}
+              </p>
+            )}
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#1a1a1a', fontWeight: 600, whiteSpace: 'nowrap' }}>
+              Rs. {product.price.toLocaleString()}
+            </p>
+          </div>
         </div>
       </div>
     </motion.div>

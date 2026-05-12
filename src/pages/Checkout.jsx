@@ -14,7 +14,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { cart, getTotal, clearCart } = useCartStore();
   const total = getTotal();
-  const delivery = total >= 5000 ? 0 : 250;
+  const delivery = total >= 5000 ? 0 : 200;
   const grandTotal = total + delivery;
 
   const [form, setForm] = useState({ name: '', phone: '', email: '', address: '', city: '', notes: '' });
@@ -50,7 +50,7 @@ export default function Checkout() {
 
     const encodedMessage = encodeURIComponent(message);
     // TODO: The shop owner needs to change this to their real WhatsApp number (including country code)
-    const phoneNumber = "+923084886368";
+    const phoneNumber = "+923247192571";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     try {
@@ -183,7 +183,14 @@ export default function Checkout() {
                   {item.selectedSize && <p style={{ fontSize: 10, color: '#aaa', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 2 }}>{item.selectedSize}</p>}
                   <p style={{ fontSize: 12, color: '#888', marginTop: 4 }}>Qty: {item.quantity}</p>
                 </div>
-                <p style={{ fontSize: 13, color: '#1a1a1a', whiteSpace: 'nowrap', paddingTop: 2 }}>Rs. {(item.price * item.quantity).toLocaleString()}</p>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', paddingTop: 2 }}>
+                  {item.original_price && (
+                    <span style={{ fontSize: 11, color: '#aaa', textDecoration: 'line-through', marginBottom: 2 }}>
+                      Rs. {(item.original_price * item.quantity).toLocaleString()}
+                    </span>
+                  )}
+                  <span style={{ fontSize: 13, color: '#1a1a1a' }}>Rs. {(item.price * item.quantity).toLocaleString()}</span>
+                </div>
               </div>
             ))}
           </div>

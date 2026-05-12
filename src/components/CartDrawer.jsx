@@ -74,7 +74,16 @@ export default function CartDrawer() {
                       <div style={{ flex: 1 }}>
                         <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 16 }}>{item.name}</p>
                         {item.selectedSize && <p style={{ fontSize: 10, color: '#aaa', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: 2 }}>{item.selectedSize}</p>}
-                        <p style={{ fontSize: 13, color: '#c9a227', marginTop: 6 }}>Rs. {(item.price * item.quantity).toLocaleString()}</p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 6 }}>
+                          {item.original_price && (
+                            <span style={{ fontSize: 11, color: '#aaa', textDecoration: 'line-through' }}>
+                              Rs. {(item.original_price * item.quantity).toLocaleString()}
+                            </span>
+                          )}
+                          <span style={{ fontSize: 13, color: '#c9a227' }}>
+                            Rs. {(item.price * item.quantity).toLocaleString()}
+                          </span>
+                        </div>
 
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
                           {/* Qty */}
